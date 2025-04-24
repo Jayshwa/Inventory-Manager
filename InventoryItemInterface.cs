@@ -1,3 +1,5 @@
+// InventoryItemInterface.cs
+// Description: This file contains an interface for inventory items in the inventory management system.
 using System;
 
 namespace InventoryManagementSystem
