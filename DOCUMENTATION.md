@@ -22,9 +22,9 @@ The C# Inventory Manager is a console-based application designed to help small b
 * **Data Storage:** The application uses a `Dictionary<int, InventoryItem>` in the `Program` class to store inventory data in memory. Data is not persisted between sessions.
 * **Project Type:** Console Application
 * **Key Classes:**
+    * `Program`: Contains the `Main` method and handles user interaction and the main inventory storage.
     * `InventoryItem`: Represents an item in the inventory.
     * `InventoryManager`: Manages the collection of inventory items and provides the main functionalities.
-    * `Program`: Contains the `Main` method and handles user interaction and the main inventory storage.
     * `PopulateInitialInventoryClass`: Contains the method to populate the inventory with sample data.
     * `Parsing`: Contains the method to parse user input strings to integers.
     * `IInventoryItem`: Defines the structure and methods for inventory items.
