@@ -12,9 +12,14 @@ For detailed information, please refer to the [documentation.md](documentation.m
 
 ## Getting Started
 
-1.  **Prerequisites:** [.NET Runtime](https://dotnet.microsoft.com/download)
-2.  **Run:** Navigate to the executable directory in your terminal and run `InventoryManager.exe`.
-3.  **Follow the prompts:** The application will guide you through the available options.
+1.  **Prerequisites:** [.NET SDK](https://dotnet.microsoft.com/download)
+2.  **Build:**
+    * Open a terminal or command prompt.
+    * Navigate to the directory containing the `.sln` file (the solution file).
+    * Run the command `dotnet build`.  This will compile the project and create the executable.
+3.  **Run:** After the build is successful, navigate to the `bin\Debug\net8.0` (or similar, depending on your .NET SDK version and build configuration) directory.
+    * Run the executable (e.g., `InventoryManager.exe`).
+4.  **Follow the prompts:** The application will guide you through the available options.
 
 ## Showcase
 
