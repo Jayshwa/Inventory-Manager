@@ -1,159 +1,109 @@
-# Project Documentation: C# Inventory Manager
+# Inventory Management System
 
-This document provides an overview of the C# Inventory Manager project, including its purpose, features, and instructions for use.
+## Project Goal:
 
-## 1. Introduction
+Creation of a console-based application where users can comprehensively track and manage their inventory. Allows users to add, amend, and remove inventory items, including details such as name, brand, description, quantity, price, and type. Provides users with a way to effectively manage and maintain accurate records of their inventory.
 
-The C# Inventory Manager is a console-based application designed to help small businesses track and manage their inventory. It provides a simple and efficient way to add, remove, update, and view inventory items. It was designed and made to develop my C# and .NET skills and provide something to showcase in my portfolio.
+## Major Features:
 
-## 2. Features
+Here's what the app can currently do:
 
-* **Add Inventory:** Add new items to the inventory, including name, quantity, and price.
-* **View Inventory:** Display a list of all items currently in the inventory, showing their details.
-* **Update Inventory:** Modify the quantity or price of an existing item.
-* **Remove Inventory:** Delete an item from the inventory.
-* **Data Persistence:** The application does not currently save data between sessions. Inventory data is lost when the application is closed.
-* **Error Handling:** Basic input validation and error handling to prevent invalid data.
-* **Sample Data:** The application can be initialized with a set of sample inventory items.
+Feature 1: Add a new item to the inventory, including name, brand, description, quantity, price, and type.
+Feature 2: Update the details (name, brand, description, quantity, price, or type) of an existing inventory item.
+Feature 3: View all inventory items with their complete details, presented in a paginated format for easy browsing.
+Feature 4: View a specific inventory item by searching for its ID, name, brand, or type.
+Feature 5: Remove a specific product from the inventory using its unique ID.
+Feature 6: Initialize the inventory with a set of sample items at the user's request upon starting the application.
 
-## 3. Technical Details
+## Breakdown of Features into Tasks:
 
-* **Language:** C#
-* **Data Storage:** The application uses a `Dictionary<int, InventoryItem>` in the `Program` class to store inventory data in memory. Data is not persisted between sessions.
-* **Project Type:** Console Application
-* **Key Classes:**
-    * `InventoryItem`: Represents an item in the inventory.
-    * `InventoryManager`: Manages the collection of inventory items and provides the main functionalities.
-    * `Program`: Contains the `Main` method and handles user interaction and the main inventory storage.
-    * `PopulateInitialInventoryClass`: Contains the method to populate the inventory with sample data.
-    * `Parsing`: Contains the method to parse user input strings to integers.
-    * `IInventoryItem`: Defines the structure and methods for inventory items.
+Here's a detailed breakdown of the steps for each main feature:
 
-## 4. Class Details
+**Feature 1: Adding a new inventory item**
+Task 1.1: Ask the user for the item's name.
+Task 1.2: Ask for the item's brand.
+Task 1.3: Ask for the item's description.
+Task 1.4: Ask for the initial stock quantity.
+Task 1.5: Ask for the item's price.
+Task 1.6: Ask for the item's type.
+Task 1.7: Ensure the quantity and price are valid numbers (greater than zero).
+Task 1.8: Create a way to store this new item's information.
+Task 1.9: Actually save the new item to the inventory.
+Task 1.10: Tell the user the item has been added.
 
-### 4.1 InventoryItem Class
+**Feature 2: Updating an inventory item**
+Task 2.1: Ask the user for the ID of the item they want to update.
+Task 2.2: Find that item's information in the inventory.
+Task 2.3: If found, present a menu of options to update: name, brand, description, quantity, price, or type (or all details at once).
+Task 2.4: For each selected option, ask for the new value.
+Task 2.5: Validate the new quantity and price if they are being updated.
+Task 2.6: Update the corresponding information for that item.
+Task 2.7: Save the updated information.
+Task 2.8: Tell the user the item has been updated and display the new details.
+Task 2.9: Handle the case where the provided ID does not match any item in the inventory.
 
-Represents an item in the inventory.
+**Feature 3: Viewing all inventory items**
+Task 3.1: Retrieve all the inventory items from storage.
+Task 3.2: Display the name, brand, description, quantity, price, and type of each item.
+Task 3.3: Implement pagination to show a limited number of items per page (e.g., 5).
+Task 3.4: Allow the user to navigate to the next page ('N'), previous page ('P'), or exit the viewing mode ('X').
+Task 3.5: Display the current page number and the total number of pages.
+Task 3.6: Inform the user if the inventory is empty.
 
-**Properties:**
+**Feature 4: Viewing a specific inventory item**
+Task 4.1: Ask the user how they want to search (by ID, Name, Brand, or Type).
+Task 4.2: Based on the chosen option, ask the user for the search term.
+Task 4.3: Search the inventory for items matching the criteria (case-insensitive for Name, Brand, and Type).
+Task 4.4: If a match is found, display the complete details of the item(s).
+Task 4.5: If no matching item is found, inform the user.
 
-* `_itemName` (string): The name of the item.
-* `_itemBrand` (string): The brand of the item.
-* `_itemDescription` (string): The description of the item.
-* `_quantity` (int): The quantity of the item in stock.
-* `_price` (decimal): The price of the item.
-* `_itemType` (string): The type of item.
+**Feature 5: Removing an inventory item**
+Task 5.1: Ask the user for the ID of the item they want to remove.
+Task 5.2: Find the item with the given ID in the inventory.
+Task 5.3: If found, display the item's details and ask for confirmation before deleting.
+Task 5.4: If the user confirms, remove the item from the inventory.
+Task 5.5: Tell the user if the item has been successfully removed.
+Task 5.6: Handle the case where the provided ID does not match any item in the inventory.
 
-**Methods:**
+**Feature 6: Initializing with sample inventory**
+Task 6.1: Upon application start, ask the user if they want to create a sample inventory (Y/N).
+Task 6.2: If the user chooses 'Y', populate the inventory with a predefined set of sample `InventoryItem` objects.
+Task 6.3: Inform the user whether the sample inventory was initialized or skipped.
 
-* `InventoryItem(string itemName, string itemBrand, string itemDescription, int quantity, decimal price, string itemType)`: Constructor for creating an `InventoryItem` object.
-* `UpdateItemName(string newItemName)`: Updates the name of the item.
-* `UpdateItemDescription(string newItemDescription)`: Updates the description of the item.
-* `UpdateItemQuantity(int newQuantity)`: Updates the quantity of the item.
-* `UpdateItemPrice(decimal newPrice)`: Updates the price of the item.
-* `UpdateItemType(string newItemType)`: Updates the type of the item.
-* `DisplayItemDetails()`: Displays the details of an inventory item.
+## How the code is organised (Modules):
 
-### 4.2 InventoryManager Class
+The codebase is structured into the following modules:
 
-Manages the collection of inventory items.
+* **`Program.cs`**: This serves as the main entry point of the application. It handles the main program loop, displays the main menu, and orchestrates the calls to other modules based on user input. It also initializes the inventory dictionary and handles the initial sample inventory creation.
+* **`InventoryManager.cs`**: This class contains the core business logic for managing inventory items. It includes static methods for creating new items (`CreateInventoryItem`), updating existing items (`UpdateInventoryItem`), displaying all items with pagination (`ShowInventoryItems`), displaying specific items by various criteria (`ShowSpecificItemById`, `ShowSpecificItemByName`, `ShowSpecificItemByBrand`, `ShowSpecificItemByType`), and deleting items (`DeleteInventoryItem`).
+* **`InventoryItem.cs`**: This class defines the structure and behavior of an individual inventory item. It implements the `IInventoryItem` interface and includes properties for `_itemName`, `_itemBrand`, `_itemDescription`, `_quantity`, `_price`, and `_itemType`, as well as methods to update these properties and display the item's details (`DisplayItemDetails`).
+* **`IInventoryItem.cs`**: This interface defines a contract for inventory item classes, specifying the essential properties (`_itemName`, `_itemBrand`, `_itemDescription`, `_quantity`, `_price`, `_itemType`) and methods (`UpdateItemName`, `UpdateItemDescription`, `UpdateItemQuantity`, `UpdateItemPrice`, `DisplayItemDetails`) that any inventory item implementation must adhere to.
+* **`PopulateInitialInventoryClass.cs`**: This class contains a static method (`PopulateInventoryItems`) responsible for creating and adding a predefined set of sample `InventoryItem` objects to the inventory dictionary when the user chooses to initialize a sample inventory.
+* **`Parsing.cs`**: This utility class provides a static method (`ParseInputToInteger`) to safely parse string inputs into integer values, returning a specific value (e.g., -1) to indicate parsing failure.
 
-**Methods:**
+## Beginner Notes on C# Stuff:
 
-* `CreateInventoryItem()`: Creates a new inventory item based on user input.
-* `ShowInventoryItems(Dictionary<int, InventoryItem> inventoryItems)`: Displays all items in the inventory, with pagination.
-* `UpdateInventoryItem(Dictionary<int, InventoryItem> inventoryItems, int id)`: Updates the details of an existing item.
-* `DeleteInventoryItem(Dictionary<int, InventoryItems> inventoryItems, int id)`: Removes an item from the inventory.
-* `ShowSpecificItemById(Dictionary<int, InventoryItem> inventoryItems, int id)`: Displays a specific item by its ID.
-* `ShowSpecificItemByName(Dictionary<int, InventoryItem> inventoryItems, string name)`: Displays items with a specific name.
-* `ShowSpecificItemByBrand(Dictionary<int, InventoryItem> inventoryItems, string brand)`: Displays items with a specific brand.
-* `ShowSpecificItemByType(Dictionary<int, InventoryItem> inventoryItems, string type)`: Displays items of a specific type.
+* **Input:** `Console.ReadLine()` is used to get text input from the user in the console.
+* **Output:** `Console.WriteLine()` is used to display text and information to the user on the console.
+* **Data Storage:** The inventory items are currently stored in a `Dictionary<int, InventoryItem>` object within the `Program` class. The `int` key serves as a unique identifier for each `InventoryItem` object. The `InventoryItem` class holds the details of each product. This storage is in-memory only and will not persist after the application closes.
+* **Interfaces:** The `IInventoryItem` interface defines a blueprint for inventory items, ensuring that any class implementing it has specific properties and methods. This promotes consistency and allows for potential future扩展 with different types of inventory items.
+* **Logic and Control Flow:**
+    * `if`/`else` statements are used for decision-making based on user input and conditions.
+    * `switch` statements handle different options selected from the main menu.
+    * `foreach` loops iterate over collections of inventory items (e.g., when displaying all items).
+    * `while` loops are used for the main application loop and for handling pagination when viewing inventory.
+    * Basic data types like `string`, `decimal`, and `int` are used to store item attributes.
+    * `try-catch` blocks are used for basic error handling, such as when parsing user input to numbers.
+* **Namespaces and `using` directives:** The code is organized within the `InventoryManagementSystem` namespace. The `using` directive is used to import namespaces (like `System.Collections.Generic` for using Dictionaries) to avoid writing fully qualified names.
+* **Static Methods:** The `InventoryManager`, `PopulateInitialInventoryClass`, and `Parsing` classes primarily use static methods, meaning these methods can be called directly on the class itself without needing to create an instance of the class.
 
-### 4.3 Program Class
+## Future Ideas (Maybe later!):
 
-Contains the `Main` method, which is the entry point of the application.
+Things I could add to make it better:
 
-**Fields:**
-
-* `inventoryItems` (`Dictionary<int, InventoryItem>`): A dictionary to store the inventory items, using the an integer ID as the key.
-
-**Methods:**
-
-* `Main(string[] args)`: Handles the main program logic, including displaying the menu, getting user input, and calling the appropriate methods in the `InventoryManager` class.
-
-### 4.4 PopulateInitialInventoryClass
-
-Populates the inventory with a set of initial sample items.
-
-**Methods:**
-
-* `PopulateInventoryItems(Dictionary<int, InventoryItem> inventoryItems)`: Adds a predefined set of `InventoryItem` objects to the `inventoryItems` dictionary.
-
-### 4.5 Parsing Class
-
-Provides utility for parsing string inputs.
-
-**Methods:**
-
-* `ParseInputToInteger(string input)`: Attempts to convert a string to an integer, returning the integer if successful, and -1 if not.
-
-### 4.6 IInventoryItem Interface
-
-Defines the structure and methods for inventory items.
-
-**Properties:**
-
-* `_itemName` (string): The name of the item.
-* `_itemBrand` (string): The brand of the item.
-* `_itemDescription` (string): The description of the item.
-* `_quantity` (int): The quantity of the item in stock.
-* `_price` (decimal): The price of the item.
-* `_itemType` (string): The type of item.
-
-**Methods:**
-
-* `UpdateItemName(string newItemName)`: Updates the name of the item.
-* `UpdateItemDescription(string newItemDescription)`: Updates the description of the item.
-* `UpdateItemQuantity(int newQuantity)`: Updates the quantity of the item.
-* `UpdateItemPrice(decimal newPrice)`: Updates the price of the item.
-* `UpdateItemType(string newItemType)`: Updates the type of the item.
-* `DisplayItemDetails()`: Displays the details of an inventory item.
-
-## 5. Instructions for Use
-
-**Prerequisites:**
-
-* .NET Runtime (required to run the application)
-* A text editor or IDE (e.g., Visual Studio, VS Code)
-
-**Running the Application:**
-
-1.  **Download:** Download the source code.
-2.  **Build (If necessary):** If you downloaded the source code, use Visual Studio or the `dotnet build` command to build the project. If you downloaded a pre-built executable, skip to the next step.
-3.  **Run:** Open a terminal or command prompt, navigate to the directory containing the executable (`.exe` file), and run the program (e.g., `InventoryManager.exe`).
-4.  **Initialize Sample Inventory (Optional):** When the application starts, you will be prompted to create a sample inventory. Entering `'Y'` will populate the inventory with a predefined set of items. Entering `'N'` will start with an empty inventory.
-5.  **Use the Menu:** The application will display a menu with the following options:
-    ```
-    1. Create Inventory Item
-    2. Update Inventory Item
-    3. View All Inventory Items
-    4. View Specific Inventory Item
-    5. Delete Inventory Item
-    6. Exit
-    Enter your choice:
-    ```
-    Enter the number corresponding to the action you want to perform and press Enter.
-6.  **Follow the prompts:** The application will prompt you for the necessary information (e.g., item name, quantity, price).
-7.  **Repeat:** Continue using the menu to manage your inventory.
-8.  **Exit:** Choose the "Exit" option to quit the application. The inventory data will be lost when the program terminates.
-
-## 6. Data Storage
-
-Inventory data is stored in memory using a `Dictionary<int, InventoryItem>`. Data is not persisted between program executions.
-
-## 7. Error Handling
-
-The application includes basic error handling:
-
-* **Invalid input:** If you enter invalid input (e.g., non-numeric values for quantity or price), the application will display an error message and prompt you to enter the correct information.
-* **Item not found:** If you try to update or remove an item that doesn't exist, the application will display an error message.
+* Saving the inventory data to a persistent storage mechanism (like a text file, CSV file, or a database).
+* Implementing more robust and potentially automated unique ID generation for inventory items.
+* Adding more advanced search functionalities, such as searching by partial names, descriptions, or price ranges.
+* Generating reports on the inventory, such as low stock levels, total inventory value, or item popularity.
+* Implementing user authentication and authorization if multiple users were to interact with the system.
+* Developing a more user-friendly graphical user interface (GUI) instead of a console application.
