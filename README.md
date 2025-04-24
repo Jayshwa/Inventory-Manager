@@ -75,7 +75,7 @@ Task 6.3: Inform the user whether the sample inventory was initialized or skippe
 The codebase is structured into the following modules:
 
 * **`Program.cs`**: This serves as the main entry point of the application. It handles the main program loop, displays the main menu, and orchestrates the calls to other modules based on user input. It also initializes the inventory dictionary and handles the initial sample inventory creation.
-* **`InventoryManager.cs`**: This class contains the core business logic for managing inventory items. It includes static methods for creating new items (`CreateInventoryItem`), updating existing items (`UpdateInventoryItem`), displaying all items with pagination (`ShowInventoryItems`), displaying specific items by various criteria (`ShowSpecificItemById`, `ShowSpecificItemByName`, `ShowSpecificItemByBrand`, `ShowSpecificItemByType`), and deleting items (`DeleteInventoryItem`).
+* **`InventoryManager.cs`**: This class contains the core logic for managing inventory items. It includes static methods for creating new items (`CreateInventoryItem`), updating existing items (`UpdateInventoryItem`), displaying all items with pagination (`ShowInventoryItems`), displaying specific items by various criteria (`ShowSpecificItemById`, `ShowSpecificItemByName`, `ShowSpecificItemByBrand`, `ShowSpecificItemByType`), and deleting items (`DeleteInventoryItem`).
 * **`InventoryItem.cs`**: This class defines the structure and behavior of an individual inventory item. It implements the `IInventoryItem` interface and includes properties for `_itemName`, `_itemBrand`, `_itemDescription`, `_quantity`, `_price`, and `_itemType`, as well as methods to update these properties and display the item's details (`DisplayItemDetails`).
 * **`IInventoryItem.cs`**: This interface defines a contract for inventory item classes, specifying the essential properties (`_itemName`, `_itemBrand`, `_itemDescription`, `_quantity`, `_price`, `_itemType`) and methods (`UpdateItemName`, `UpdateItemDescription`, `UpdateItemQuantity`, `UpdateItemPrice`, `DisplayItemDetails`) that any inventory item implementation must adhere to.
 * **`PopulateInitialInventoryClass.cs`**: This class contains a static method (`PopulateInventoryItems`) responsible for creating and adding a predefined set of sample `InventoryItem` objects to the inventory dictionary when the user chooses to initialize a sample inventory.
@@ -97,7 +97,7 @@ The codebase is structured into the following modules:
 * **Namespaces and `using` directives:** The code is organized within the `InventoryManagementSystem` namespace. The `using` directive is used to import namespaces (like `System.Collections.Generic` for using Dictionaries) to avoid writing fully qualified names.
 * **Static Methods:** The `InventoryManager`, `PopulateInitialInventoryClass`, and `Parsing` classes primarily use static methods, meaning these methods can be called directly on the class itself without needing to create an instance of the class.
 
-## Future Ideas (Maybe later!):
+## Future Ideas:
 
 Things I could add to make it better:
 
